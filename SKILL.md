@@ -1,7 +1,7 @@
 ---
 name: opencli
 description: "OpenCLI — Make any website your CLI. Zero risk, AI-powered, reuse Chrome login."
-version: 0.5.1
+version: 0.6.0
 author: jackwener
 tags: [cli, browser, web, mcp, playwright, bilibili, zhihu, twitter, github, v2ex, hackernews, reddit, xiaohongshu, xueqiu, AI, agent]
 ---
@@ -34,7 +34,8 @@ npm update -g @jackwener/opencli
 
 Browser commands require:
 1. Chrome browser running **(logged into target sites)**
-2. [Playwright MCP Bridge](https://chromewebstore.google.com/detail/playwright-mcp-bridge/mmlmfjhmonkocbjadbfplnigmagldckm) extension installed and configured
+2. [Playwright MCP Bridge](https://chromewebstore.google.com/detail/playwright-mcp-bridge/mmlmfjhmonkocbjadbfplnigmagldckm) extension installed
+3. Run `opencli setup` to auto-discover token and configure all tools
 
 > **Note**: You must be logged into the target website in Chrome before running commands. Tabs opened during command execution are auto-closed afterwards.
 
@@ -139,6 +140,9 @@ opencli list --json         # JSON output
 opencli list -f yaml        # YAML output
 opencli validate            # Validate all CLI definitions
 opencli validate bilibili   # Validate specific site
+opencli setup               # Interactive token setup (auto-discover + TUI checkbox)
+opencli doctor              # Diagnose token config across all tools
+opencli doctor --fix -y     # Auto-fix all config files (non-interactive)
 ```
 
 ### AI Agent Workflow

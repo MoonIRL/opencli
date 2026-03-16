@@ -9,7 +9,7 @@
 [![Node.js Version](https://img.shields.io/node/v/@jackwener/opencli?style=flat-square)](https://nodejs.org)
 [![License](https://img.shields.io/npm/l/@jackwener/opencli?style=flat-square)](./LICENSE)
 
-A CLI tool that turns **any website** into a command-line interface. **59 commands** across **18 sites** — bilibili, zhihu, xiaohongshu, twitter, reddit, xueqiu, github, v2ex, hackernews, bbc, weibo, boss, yahoo-finance, reuters, smzdm, ctrip, youtube, coupang — powered by browser session reuse and AI-native discovery.
+A CLI tool that turns **any website** into a command-line interface — bilibili, zhihu, xiaohongshu, twitter, reddit, and many more — powered by browser session reuse and AI-native discovery.
 
 ---
 
@@ -46,11 +46,21 @@ OpenCLI connects to your browser through the Playwright MCP Bridge extension.
 ### Playwright MCP Bridge Extension Setup
 
 1. Install **[Playwright MCP Bridge](https://chromewebstore.google.com/detail/playwright-mcp-bridge/mmlmfjhmonkocbjadbfplnigmagldckm)** extension in Chrome.
-2. Obtain your token by clicking the extension icon in the browser toolbar or from the extension settings page.
+2. Run `opencli setup` — it auto-discovers your token and lets you choose which tools to configure:
 
-**You must configure this token in BOTH your MCP configuration AND system environment variables.**
+```bash
+opencli setup
+```
 
-First, add it to your MCP client config (e.g. Claude/Cursor):
+The interactive TUI will:
+- 🔍 Auto-discover your token from Chrome (no manual copy needed)
+- ☑️ Show all detected tools (Codex, Cursor, Claude Code, Gemini CLI, etc.)
+- ✏️ Update only the files you select (Space to toggle, Enter to confirm)
+
+<details>
+<summary>Manual setup (alternative)</summary>
+
+Add token to your MCP client config (e.g. Claude/Cursor):
 
 ```json
 {
@@ -66,13 +76,15 @@ First, add it to your MCP client config (e.g. Claude/Cursor):
 }
 ```
 
-And, so that `opencli` commands can use it directly in the terminal, export it in your shell environment (e.g. `~/.zshrc`):
+Export in shell (e.g. `~/.zshrc`):
 
 ```bash
 export PLAYWRIGHT_MCP_EXTENSION_TOKEN="<your-token-here>"
 ```
 
-After configuring, run `opencli doctor` to verify your token is correctly set up across all locations:
+</details>
+
+Verify with `opencli doctor` — shows colored status for all config locations:
 
 ```bash
 opencli doctor
