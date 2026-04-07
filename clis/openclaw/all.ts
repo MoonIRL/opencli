@@ -24,6 +24,7 @@ cli({
   domain: 'docs.openclaw.ai',
   strategy: Strategy.PUBLIC,
   browser: true,
+  timeoutSeconds: 300,
   args: [
     { name: 'lang', default: 'en', help: '语言: en, zh-CN, ja-JP 等' },
     { name: 'output', default: './openclaw-docs', help: '输出目录' },
